@@ -55,18 +55,24 @@ class Explorer extends React.Component {
                             errorMessage={this.state.errorMessage}
                         />
                     </Col>
-                </Row> 
-                
-                {this.state.displayMap && 
+                </Row>
+
+                {this.state.displayMap &&
                     <>
                         <Row>
                             <Col>
-
+                                <LatLon
+                                    city={this.state.location}
+                                    lat={this.state.latitude}
+                                    lon={this.state.longitude}
+                                />
                             </Col>
                         </Row>
                         <Row>
                             <Col>
-
+                                <Map img_url={`https://maps.locationiq.com/v3/staticmap?key=${API_KEY}&center=${this.state.latitude},${this.state.longitude}&zoom=12&size=600x400&format=jpg&maptype=streets`}
+                                    city={this.state.location}
+                                />
                             </Col>
                         </Row>
                     </>
