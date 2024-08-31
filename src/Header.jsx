@@ -7,7 +7,7 @@ class Header extends React.Component{
 
         return(
             <header> 
-                <Navbar class expand="lg" className="bg-body-tertiary">
+                <Navbar  expand="lg" >
                     <h1>Exploring Cities</h1>
                     <p>Aquí podrás ...</p>
                 </Navbar>

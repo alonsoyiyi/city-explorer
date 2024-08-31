@@ -2,7 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import CitySearch from "./CitySearch";
-
+import axios from "axios";
+import LatLon from "./LatLon";
+import Map from "./Map";
 const API_KEY = import.meta.env.VITE_API_KEY;
 
 class Explorer extends React.Component {
@@ -31,14 +33,14 @@ class Explorer extends React.Component {
                 latitude: location.data[0].lat,
                 longitude: location.data[0].lon,
                 displayMap: true,
-                displayError: false,
-            })
-        } catch (error) {
+                displayError: false});
+        } catch(error) {
             this.setState({
                 displayMap: false,
                 displayError: true,
-                errorMessage: error.response.status + ':' + error.response.data.error
-            })
+                errorMessage:error.response.status + ':'+error.response.data.error
+                });
+            console.log(error);
         }
 
     }
@@ -56,8 +58,7 @@ class Explorer extends React.Component {
                         />
                     </Col>
                 </Row>
-
-                {this.state.displayMap &&
+                { this.state.displayMap &&
                     <>
                         <Row>
                             <Col>
@@ -78,7 +79,6 @@ class Explorer extends React.Component {
                     </>
                 }
             </Container>
-
         );
     }
 }
